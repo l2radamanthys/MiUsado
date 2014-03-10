@@ -1,0 +1,92 @@
+
+Marca:
+Modelo:
+Año:
+Km:
+Combustible: 
+
+Segmento: ENUM('Sin Definir','Camioneta', 'Convertible', 'Coupe', 'Familiar', 'HatchBank', 'Monovolumen', 'Pick Up', 'Sedan', 'Utilitario')
+Tipo:
+Motor:
+Suspencion: 
+Transmicion:
+Direccion: ENUM('Asistida', 'Mecanica', 'Hidraulica')
+Puertas:
+Color:
+Dueño: Unico/Segundo/Concecionaria
+
+
+
+
+Confort
+
+Aire acondicionado
+Alarma de luces encendidas
+Apertura remota de baúl
+Asiento conductor regulable en altura
+Asiento trasero rebatible
+Asientos eléctricos
+Cierre centralizado con mando a distancia
+Cierre centralizado de puertas
+Climatizador automático
+Computadora de abordo
+Control de velocidad crucero
+Espejos exteriores eléctricos
+Faros regulables desde el interior
+Tapizado de cuero
+Techo corredizo
+Vidrios eléctricos delanteros
+Vidrios eléctricos delanteros y traseros
+Volante regulable
+
+Seguridad
+
+Airbag acompañante
+Airbag conductor
+Airbag de cortina
+Airbag laterales
+Airbag trasero
+Alarma
+Apoya cabeza en asientos traseros
+Blindado
+Cierre de puertas automático en movimiento
+Control de estabilidad (ESP)
+Control de tracción
+Doble tracción
+Faros antiniebla delanteros
+Faros antiniebla traseros
+Frenos ABS
+Inmovilizador de motor
+Isofix
+Regulador de velocidad
+Repartidor electrónico de frenado
+Sensor de estacionamiento
+Sensor de lluvia
+Sensor de luz
+Tercer luz de stop
+
+Exterior
+
+Barra porta equipaje
+Faros de xenón
+Limpia/lava luneta
+Llantas de aleación
+Paragolpes color carrocería
+Vidrios polarizados
+
+Multimedia y Audio
+
+Bluetooth
+Cargador de CD
+Comando satelital de stereo
+Entrada auxiliar
+Entrada USB
+GPS
+Manos libres
+Pasacassette
+Radio AM/FM
+Reproduce CD
+Reproduce DVD
+Reproduce MP3
+Tarjeta SD
+Volante multi-función

@@ -1,0 +1,46 @@
+
+.login-box {
+    background-color: #FFF;
+    width: 350px;
+    padding: 10px;
+    padding-top: 30px;
+    margin: 0 auto;
+    margin-top: 10%;
+    border: 1px solid #AAA;
+
+    border-radius: 6px;
+}
+
+
+
+.login-box p {
+    margin-bottom: 10pt;
+}
+
+.login-box label {
+    font-family: Helvetica, Arial;
+    width: 100px;
+    display: block;
+    float: left;
+    padding: 5pt 10pt;
+
+}
+
+.login-box input[type=text], .login-box input[type=password]{
+    font-family: Segoe-UI, Helvetica;
+    padding: 5pt 10pt;
+    border: 1px solid;
+    border-radius: 3px;
+    border-color: #C0C0C0;
+    outline-color: #DCEEFC;
+    
+    /*outline-width: 3px;
+    //outline-style: outset;
+    //outline-offset: 0px; */
+}
+
+.login-box a {
+    font-family: Helvetica;
+    font-size: 9pt;
+    color: #005782;
+}
