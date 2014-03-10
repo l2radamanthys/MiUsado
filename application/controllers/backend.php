@@ -11,7 +11,7 @@ class Backend extends CI_Controller {
     /*
      * Panel de usuario
     */
-    function index() 
+    public function index() 
     {
        if ($this->auth->is_logged()) 
        {
@@ -35,14 +35,22 @@ class Backend extends CI_Controller {
        }       
     }
     
+    
+    public  function nueva_publicacion()
+    {
+        $this->load->view('backend/header');
+        $this->load->view('backend/nueva-publicacion');        
+        $this->load->view('backend/footer');
+    }
 
-    function publicaciones_activas() {
+
+    public function publicaciones_activas() {
         $this->load->view('backend/header');
         $this->load->view('backend/publicaciones-activas');        
         $this->load->view('backend/footer');
     }
     
-    function publicaciones_finalizadas() {
+    public function publicaciones_finalizadas() {
         $this->load->view('backend/header');
         $this->load->view('backend/publicaciones-finalizadas');
         $this->load->view('backend/footer');

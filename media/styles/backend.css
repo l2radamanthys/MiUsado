@@ -65,3 +65,24 @@ table.panel-pub tr:first-child td:last-child {
     font-weight: bold;
     color:#00557D;
 }
+
+.icon-link {
+    //border: 1px solid #575757;
+    background-color: #0080FF;
+    font-size: 12pt;
+    color: #FFF;
+    text-decoration: None;
+    border-radius: 3px;
+    padding: 50px 0;
+    text-align: center;
+    display: block;
+    float: left;
+    margin-left: 5px;
+    width: 170px;
+}
+
+.icon-link:hover {
+    background-color: #FF5300; 
+    font-weight: bold;
+    box-shadow: 1px 1px 5px #AAA;
+} 

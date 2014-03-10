@@ -1,4 +1,4 @@
-<h1>Nueva Marca</h1>
+<h1>Registrar Nueva Marca</h1>
 
 <div class="forms">
 <?=form_open("marcas/registrar")?>
