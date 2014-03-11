@@ -1,5 +1,6 @@
 <?php
 
+
 class Views extends CI_Controller {
  
     public function index() 
