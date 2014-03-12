@@ -19,4 +19,10 @@ $config = array(
     "marcas_registrar" => array(
         array('field' => 'nombre_marcas', 'label' => 'Nombre Marca', 'rules' => 'required'),
     ),
+
+    "modelos_registrar" => array( 
+        array('field' => 'nombre_modelos', 'label' => 'Nombre Modelos', 'rules' => 'required'),
+
+    ),
+    
 );

@@ -4,6 +4,13 @@
 
 <?=validation_errors();?>
 
+<p style="font-size:10pt">
+EN CASO DE QUE LA MARCA, MODELO DE SU VEHICULO NO ESTE ESPECIFICADA DENTRO DE 
+LA LISTA POR FABOR SELECIONE OTRA E INGRESELA EN EL CAMPO "VERSION" A LA 
+BREVEDAD ESTA SERA EVALUADA Y REGISTRADA. MUCHAS GRACIAS
+</p>
+
+
 <br />
 <div class="forms">
 <?=form_open('autos/registrar/');?>
@@ -18,7 +25,7 @@
 
     <p>
         <label>Modelo:</label>
-        <select name="fk_id_mdelos" id="fk_id_modelos" size="1">
+        <select name="fk_id_modelos" id="fk_id_modelos" size="1">
          
         </select>
     </p>
@@ -60,6 +67,17 @@
         <label>Motor Cilindradas:</label>
         <input type="text" name="motor_cilindrada_autos" value="<?=set_value('motor_cilindrada_autos');?>" id="motor_cilindrada_autos" size="5" maxlength="5" class="text"> 
         <?=form_error('motor_cilindrada_autos');?>
+    </p>
+
+    <p>
+        <label>Combustible:</label></td>
+        <select name="fuel_autos">
+            <option value="Diesel">Diesel</option>
+            <option value="Eletrico/Hibrido">Eletrico/Hibrido</option>
+            <option value="Nafta">Nafta</option>
+            <option value="Nafta/GNC">Nafta/GNC</option>
+            <option value="Otros">Otros</option>
+        </select>
     </p>
 
     <p>

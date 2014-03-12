@@ -29,6 +29,7 @@ class Autos_model extends CI_Model {
     
     function insert($data)
     {
+        $this->db->insert($this->table_name, $data);
     }
 }
 

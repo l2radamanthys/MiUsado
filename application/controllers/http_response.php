@@ -19,6 +19,30 @@ class Http_response extends CI_Controller {
         }
     }   
 
+    /* 
+     * Tabla con el listado correspondiente 
+     */
+    public function listado_modelos_por_marca()
+    {
+        $this->load->model('modelos_model');
+        
+        if (isset($_POST['id'])) { $id = $this->input->post('id'); }
+        else { $id = 1; }
+        
+        $count = $this->modelos_model->total_por_marca($id);
+        if ($count == 0)
+        {
+            echo $count;
+            echo "<p>No Hay Resultados</p>";
+        }
+        else
+        {        
+            $data['modelos'] = $this->modelos_model->filter('fk_id_marcas='.$id);
+            $this->load->view('backend/modelos/registrar-tbl', $data);
+        }
+    }
+    
+
     /*
         Funcion de prueba para controlar que funcione la peticion AJAX
     */

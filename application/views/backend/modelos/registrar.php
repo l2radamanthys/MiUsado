@@ -1,11 +1,11 @@
 <h1>Registrar Nuevo Modelo</h1>
 
 <div class="forms">
-<?=form_open("marcas/registrar")?>
+<?=form_open("modelos/registrar")?>
 
 <p>
 <label>Nombre de la Marca:</label>
-<select name="fk_id_marcas" id="fk_id_marcas" size="1">
+<select name="fk_id_marcas" id="fk_id_marcas" size="1" onChange="modelosPorMarca(); return false;">
 <? foreach($marcas as $marca):?>
     <option value="<?=$marca['id_marcas'];?>"><?=$marca['nombre_marcas'];?></option>
 <?endforeach;?>
@@ -25,4 +25,6 @@
 </form>
 </div>
 
+<div class="" id="result_table">
+</div>
 
