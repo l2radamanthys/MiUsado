@@ -4,6 +4,7 @@ CREATE TABLE `Confort` (
 	PRIMARY KEY (`id_confort`)
 )
 
+
 CREATE TABLE `Seguridad` (
 	`id_seguridad` INT NOT NULL AUTO_INCREMENT,
 	`nombre_seguridad` VARCHAR(50) NOT NULL,
@@ -25,9 +26,20 @@ CREATE TABLE `Multimedia` (
 CREATE TABLE `ConfortAutos` (
 	`fk_id_autos` INT NOT NULL,
 	`fk_id_confort` INT NOT NULL,
-	CONSTRAINT `fk_id_autos` FOREIGN KEY (`fk_id_autos`) REFERENCES `autos` (`id_autos`) ON UPDATE CASCADE ON DELETE CASCADE,
-	CONSTRAINT `fk_id_confort` FOREIGN KEY (`fk_id_confort`) REFERENCES `confort` (`id_confort`) ON UPDATE CASCADE ON DELETE CASCADE
-)
+	)
 COLLATE='utf8_spanish2_ci'
 ENGINE=InnoDB;
 
+
+CREATE TABLE IF NOT EXISTS `Imagenes` (
+    `id_imagenes` INT NOT NULL AUTO_INCREMENT,
+    `fk_id_autos` INT,
+    `ruta_imagenes` VARCHAR(255),
+	PRIMARY KEY (`id_imagenes`) ,
+    CONSTRAINT `fk_Imagenes_Autos`
+    FOREIGN KEY (`fk_id_autos` )
+    REFERENCES `Autos` (`id_autos` )
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+)ENGINE=InnoDB;
+ 

@@ -19,6 +19,7 @@ class Http_response extends CI_Controller {
         }
     }   
 
+
     /* 
      * Tabla con el listado correspondiente 
      */
@@ -41,7 +42,42 @@ class Http_response extends CI_Controller {
             $this->load->view('backend/modelos/registrar-tbl', $data);
         }
     }
+
+
+    /*
+     * Permite subir imagenes 
+     *
+     */
+    public function upload_image()
+    {
+        $this->load->library('upload');
+        $config = array {
+            'upload_path' => base_url().'media/upload/',
+            'allowed_types' => 'jpg, png',
+            'max_size' => 1024 * 5,
+       };
+
+        $this->upload->initialize($config);
+        
+        if ($this->upload->do_upload('resume_file'))
+        {
+            $image = $this->upload->data();
+        }
+        else #error
+        {
+        }
     
+    }
+
+
+    /*
+     * Elimina una imagen
+     */
+    public function delete_image()
+    {
+        
+    }
+
 
     /*
         Funcion de prueba para controlar que funcione la peticion AJAX
