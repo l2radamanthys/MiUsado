@@ -7,9 +7,9 @@ class Autos extends CI_Controller {
         parent::__construct();
         $this->load->library('auth');
     }
+
     
-    
-    function registrar() 
+    public function registrar() 
     {
         if ($this->auth->is_logged()) 
         {
@@ -130,6 +130,18 @@ class Autos extends CI_Controller {
         }          
     }    
 
+
+    public function subir_imagen()
+    {
+        $this->load->library('form_validation');
+        $this->load->helper('form');
+        
+        
+        $data['js_include'] = $this->load->view('backend/imagenes/upload-js', '', TRUE);
+        $this->load->view('backend/header', $data);
+        $this->load->view('backend/imagenes/upload');
+        $this->load->view('backend/footer');
+    }
 
 }
 

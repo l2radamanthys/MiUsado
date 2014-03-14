@@ -65,6 +65,7 @@ class Http_response extends CI_Controller {
         }
         else #error
         {
+            echo "Error";
         }
     
     }
