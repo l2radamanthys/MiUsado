@@ -54,5 +54,12 @@ class Backend extends CI_Controller {
         $this->load->view('backend/header');
         $this->load->view('backend/publicaciones-finalizadas');
         $this->load->view('backend/footer');
-    }    
+    }
+
+    public function span()
+    {
+        echo $_SERVER['DOCUMENT_ROOT'];
+    }
+    
+    
 }

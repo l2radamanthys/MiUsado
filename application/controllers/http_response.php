@@ -50,24 +50,34 @@ class Http_response extends CI_Controller {
      */
     public function upload_image()
     {
-        $this->load->library('upload');
-        $config = array {
-            'upload_path' => base_url().'media/upload/',
-            'allowed_types' => 'jpg, png',
-            'max_size' => 1024 * 5,
-       };
-
-        $this->upload->initialize($config);
+        $this->load->helper('my_tools');
         
-        if ($this->upload->do_upload('resume_file'))
-        {
-            $image = $this->upload->data();
+        $target_path = $this->config->item('image_path');
+        $upload_config['upload_path'] = $target_path;
+        $upload_config['allowed_types'] = 'gif|jpg|png';         
+        $upload_config['max_size'] = '5120'; 
+        $upload_config['encrypt_name']  = TRUE;            
+        $this->load->library('upload', $upload_config);
+        $result = $this->upload->do_upload('Filedata');
+        
+        if (!$result) {
+            #Error de subida
+            echo 1;             
         }
-        else #error
+        else #la imagen se subio con exito
         {
-            echo "Error";
+            $imageData  = $this->upload->data();
+            $img_name = $imageData['file_name'];
+            if(my_resize_image($img_name))
+            {
+                echo $img_name;
+            }
+            else 
+            {
+                echo "Error -> ".$img_name;    
+            }
         }
-    
+            
     }
 
 

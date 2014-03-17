@@ -358,5 +358,20 @@ $config['rewrite_short_tags'] = FALSE;
 $config['proxy_ips'] = '';
 
 
+/*
+ * ------------------------------------------------------------------------
+ * Configuracion Personalizada
+ * ------------------------------------------------------------------------ 
+ */
+
+ 
+//Carpeta contenedora de todas las imagenes 
+$config['image_path'] = './media/upload/images/';
+
+//Carpeta contenedora de todas las thumbnails de las imagenes
+$config['thumb_path'] = './media/upload/thumbs/'; 
+ 
+/*-----------------------------------------------------------------------*/
+  
 /* End of file config.php */
 /* Location: ./application/config/config.php */

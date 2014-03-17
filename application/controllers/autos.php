@@ -6,6 +6,7 @@ class Autos extends CI_Controller {
     {
         parent::__construct();
         $this->load->library('auth');
+        $this->load->model('autos_model');
     }
 
     
@@ -40,8 +41,9 @@ class Autos extends CI_Controller {
                 #$data['marcas']= $this->marcas_model->all();
 
                 $form_data = array(
-                   'fk_id_marcas' =>  $this->input->post('fk_id_marcas'),
+                   #'fk_id_marcas' =>  $this->input->post('fk_id_marcas'),
                    'fk_id_modelos' =>  $this->input->post('fk_id_modelos'),
+                   'version_autos' =>  $this->input->post('version_autos'),
                    'year_autos' =>  $this->input->post('year_autos'),
                    'km_autos' =>  $this->input->post('km_autos'),
                    'fuel_autos' =>  $this->input->post('fuel_autos'),
@@ -54,6 +56,7 @@ class Autos extends CI_Controller {
                    'titulo_autos' =>  $this->input->post('titulo_autos'),
                    'descripcion_autos' =>  $this->input->post('descripcion_autos'),
                    'fk_username_users' =>  $this->auth->is_logged(),
+                   
                 );
 
                 #print_r($form_data);
@@ -62,8 +65,8 @@ class Autos extends CI_Controller {
                 #$this->load->view('backend/header');        
                 #$this->load->view('backend/autos/registrar-exito');        
                 #$this->load->view('backend/footer');        
-                $id_autos = 1;
-                redirect('autos/seleccionar_confort/'.$id_autos.'/1');
+                #$id_autos = 1;
+                #redirect('autos/seleccionar_confort/'.$id_autos.'/1');
             }
 
         }
@@ -82,7 +85,7 @@ class Autos extends CI_Controller {
     {
         if ($this->auth->is_logged()) 
         {
-            $this->load->model('autos_model');
+            
             $this->load->model('marcas_model');
             $this->load->model('confort_model');
             
@@ -127,20 +130,34 @@ class Autos extends CI_Controller {
         }
         else 
         {
+            show_404();
         }          
     }    
 
 
-    public function subir_imagen()
+    public function subir_imagen($id=NULL)
     {
-        $this->load->library('form_validation');
-        $this->load->helper('form');
-        
-        
-        $data['js_include'] = $this->load->view('backend/imagenes/upload-js', '', TRUE);
-        $this->load->view('backend/header', $data);
-        $this->load->view('backend/imagenes/upload');
-        $this->load->view('backend/footer');
+        if ($this->auth->is_logged()) 
+        {
+            
+            $this->load->model('modelos_model');
+            $this->load->model('marcas_model');
+            
+            $data['js_include'] = $this->load->view('backend/imagenes/upload-js', '', TRUE);
+            $data['auto'] = $this->autos_model->get($id);
+            $modelo = $this->modelos_model->get($data['auto']['fk_id_modelos']);
+            $marca = $this->marcas_model->get('id_marcas='.$modelo['fk_id_marcas']);
+            $data['auto']['nombre_modelos'] = $modelo['nombre_modelos'];
+            $data['auto']['nombre_marcas'] = $marca['nombre_marcas'];   
+            
+            $this->load->view('backend/header', $data);
+            $this->load->view('backend/imagenes/upload', $data);
+            $this->load->view('backend/footer');
+        }
+        else 
+        {
+            show_404();
+        }
     }
 
 }

@@ -27,8 +27,10 @@ class Modelos_model extends CI_Model {
     }
      
     
-    function get($keys, $value) 
-    {      
+    function get($id) 
+    {
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE id_modelos=".$id);
+        return $query->row_array();              
     }
     
      /**

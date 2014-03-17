@@ -19,6 +19,8 @@ class Autos_model extends CI_Model {
 
     function get($id)
     {
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE id_autos=".$id);
+        return $query->row_array();
     }
 
 

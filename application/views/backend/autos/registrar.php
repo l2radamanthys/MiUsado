@@ -31,6 +31,11 @@ BREVEDAD ESTA SERA EVALUADA Y REGISTRADA. MUCHAS GRACIAS
     </p>
 
     <p>
+    <label>Version:</label>
+    <input type="text" name="version_autos" id="version_autos" size="50" maxlength="60" class="text">
+    </p>
+
+    <p>
         <label>Segmento:</label>
         <select name="segmento_autos" id="segmento_autos" size="1">
                 <option value="Sin Definir">Sin Definir</option>

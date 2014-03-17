@@ -1,29 +1,24 @@
+<h1>Seleccionar Imagenes</h1>
 
+<br />
 
-<?=form_open('autos/subir_imagenes');?>
-    <?php
-    echo form_label('File:','file');
-    $data = array(  
-        'id' => 'txtFileName',
-        'value' => '',
-        'size' => 5,
-    'disabled' => 'disabled',
-    'style' => 'border: solid 1px; background-color: #FFFFFF;');
-    echo form_input($data); //Insertamos el campo de texto que recibirá el nombre del archivo una vez subido
-    ?>
+<p>
+ID Vehiculo: &nbsp;&nbsp;
+<strong>
+<?=$auto['id_autos'];?>
+</strong>
+</p>
 
-    <span id="spanButtonPlaceholder"></span>
+<p>
+Vehiculo: &nbsp;&nbsp;
+<strong>
+<?=$auto['nombre_marcas'];?> - <?=$auto['nombre_modelos'];?> - <?=$auto['version_autos'];?>
+</strong>
+</p>
 
-    <input type="hidden" name="hidFileID" id="hidFileID" value="" />
+<br />
 
-    <?php
-    echo "<br />";
-    $extra = 'id="btnSubmit"';
-    echo form_submit('upload','Send',$extra);
-    echo form_close();
-    ?>
-
-<div id="fsUploadProgress"></div>
+<input type="file" name="file_upload" id="file_upload" />
 
 <div class="images" id="images">
 </div>
