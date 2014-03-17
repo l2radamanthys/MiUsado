@@ -81,6 +81,12 @@ class Http_response extends CI_Controller {
     }
 
 
+    public function list_of_images($id)
+    {
+        
+    }
+
+
     /*
      * Elimina una imagen
      */
