@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Versión del servidor:         5.5.24-log - MySQL Community Server (GPL)
+-- Versión del servidor:         5.6.12-log - MySQL Community Server (GPL)
 -- SO del servidor:              Win32
 -- HeidiSQL Versión:             8.3.0.4694
 -- --------------------------------------------------------
@@ -38,13 +38,14 @@ CREATE TABLE IF NOT EXISTS `autos` (
   KEY `fk_ImagenesAutos_Autos1_idx` (`id_imagenesauto`),
   CONSTRAINT `fk_Modelos_Autos1` FOREIGN KEY (`fk_id_modelos`) REFERENCES `modelos` (`id_modelos`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_Users_Autos1` FOREIGN KEY (`fk_username_users`) REFERENCES `users` (`username_users`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
--- Volcando datos para la tabla miusado.autos: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla miusado.autos: ~0 rows (aproximadamente)
 DELETE FROM `autos`;
 /*!40000 ALTER TABLE `autos` DISABLE KEYS */;
 INSERT INTO `autos` (`id_autos`, `fk_id_modelos`, `version_autos`, `year_autos`, `km_autos`, `fuel_autos`, `motor_cv_autos`, `motor_cilindrada_autos`, `segmento_autos`, `direccion_autos`, `puertas_autos`, `titulo_autos`, `descripcion_autos`, `precio_autos`, `ini_date_autos`, `venc_date_autos`, `fk_username_users`, `activa_autos`, `id_imagenesauto`) VALUES
-	(1, 24, 'Pack Plus 2', 2011, 65000, 'Nafta', 105, '1.6', 'Sedan', 'Asistida', 5, 'Renault Sandero', 'Descripcion del Modelo', 85000.00, NULL, NULL, 'admin', 0, NULL);
+	(1, 24, 'Pack Plus 2', 2011, 65000, 'Nafta', 105, '1.6', 'Sedan', 'Asistida', 5, 'Renault Sandero', 'Descripcion del Modelo', 85000.00, NULL, NULL, 'admin', 0, NULL),
+	(2, 23, '2 Base', 2008, 135000, 'Nafta', 95, '1.3', 'Sedan', 'Hidraulica', 5, 'Clio 2 Excelente estado', 'Vendo Renault Clio 2, unico dueño tapizado de Cuero, volante deportivo y muchas chucherias mas.', 45000.00, NULL, NULL, 'admin', 0, NULL);
 /*!40000 ALTER TABLE `autos` ENABLE KEYS */;
 
 
@@ -56,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `confort` (
   PRIMARY KEY (`id_confort`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
--- Volcando datos para la tabla miusado.confort: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla miusado.confort: ~18 rows (aproximadamente)
 DELETE FROM `confort`;
 /*!40000 ALTER TABLE `confort` DISABLE KEYS */;
 INSERT INTO `confort` (`id_confort`, `nombre_confort`) VALUES
@@ -92,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `confortautos` (
   CONSTRAINT `fk_Confort_table11` FOREIGN KEY (`fk_id_confort`) REFERENCES `confort` (`id_confort`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
--- Volcando datos para la tabla miusado.confortautos: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla miusado.confortautos: ~3 rows (aproximadamente)
 DELETE FROM `confortautos`;
 /*!40000 ALTER TABLE `confortautos` DISABLE KEYS */;
 INSERT INTO `confortautos` (`fk_id_confort`, `fk_id_autos`) VALUES
@@ -106,14 +107,14 @@ INSERT INTO `confortautos` (`fk_id_confort`, `fk_id_autos`) VALUES
 DROP TABLE IF EXISTS `exterior`;
 CREATE TABLE IF NOT EXISTS `exterior` (
   `id_exterior` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre_multimedia` varchar(45) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
+  `nombre_exterior` varchar(45) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
   PRIMARY KEY (`id_exterior`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
--- Volcando datos para la tabla miusado.exterior: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla miusado.exterior: ~6 rows (aproximadamente)
 DELETE FROM `exterior`;
 /*!40000 ALTER TABLE `exterior` DISABLE KEYS */;
-INSERT INTO `exterior` (`id_exterior`, `nombre_multimedia`) VALUES
+INSERT INTO `exterior` (`id_exterior`, `nombre_exterior`) VALUES
 	(1, 'Barra porta equipaje'),
 	(2, 'Faros de xenón'),
 	(3, 'Limpia/lava luneta'),
@@ -134,9 +135,12 @@ CREATE TABLE IF NOT EXISTS `exteriorautos` (
   CONSTRAINT `fk_Exterior_ExteriorAutos1` FOREIGN KEY (`fk_id_exterior`) REFERENCES `exterior` (`id_exterior`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
--- Volcando datos para la tabla miusado.exteriorautos: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla miusado.exteriorautos: ~2 rows (aproximadamente)
 DELETE FROM `exteriorautos`;
 /*!40000 ALTER TABLE `exteriorautos` DISABLE KEYS */;
+INSERT INTO `exteriorautos` (`fk_id_exterior`, `fk_id_autos`) VALUES
+	(3, 1),
+	(5, 1);
 /*!40000 ALTER TABLE `exteriorautos` ENABLE KEYS */;
 
 
@@ -203,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `modelos` (
   CONSTRAINT `fk_Marca_Modelos` FOREIGN KEY (`fk_id_marcas`) REFERENCES `marcas` (`id_marcas`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
--- Volcando datos para la tabla miusado.modelos: ~120 rows (aproximadamente)
+-- Volcando datos para la tabla miusado.modelos: ~130 rows (aproximadamente)
 DELETE FROM `modelos`;
 /*!40000 ALTER TABLE `modelos` DISABLE KEYS */;
 INSERT INTO `modelos` (`id_modelos`, `fk_id_marcas`, `nombre_modelos`) VALUES
@@ -348,7 +352,7 @@ CREATE TABLE IF NOT EXISTS `multimedia` (
   PRIMARY KEY (`id_multimedia`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
--- Volcando datos para la tabla miusado.multimedia: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla miusado.multimedia: ~14 rows (aproximadamente)
 DELETE FROM `multimedia`;
 /*!40000 ALTER TABLE `multimedia` DISABLE KEYS */;
 INSERT INTO `multimedia` (`id_multimedia`, `nombre_multimedia`) VALUES
@@ -380,9 +384,19 @@ CREATE TABLE IF NOT EXISTS `multimediaautos` (
   CONSTRAINT `fk_Multimedia_MultimediaAutos1` FOREIGN KEY (`fk_id_multimedia`) REFERENCES `multimedia` (`id_multimedia`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
--- Volcando datos para la tabla miusado.multimediaautos: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla miusado.multimediaautos: ~9 rows (aproximadamente)
 DELETE FROM `multimediaautos`;
 /*!40000 ALTER TABLE `multimediaautos` DISABLE KEYS */;
+INSERT INTO `multimediaautos` (`fk_id_multimedia`, `fk_id_autos`) VALUES
+	(1, 1),
+	(2, 1),
+	(3, 1),
+	(4, 1),
+	(5, 1),
+	(7, 1),
+	(9, 1),
+	(10, 1),
+	(12, 1);
 /*!40000 ALTER TABLE `multimediaautos` ENABLE KEYS */;
 
 
@@ -418,6 +432,8 @@ CREATE TABLE IF NOT EXISTS `promotions` (
 -- Volcando datos para la tabla miusado.promotions: ~0 rows (aproximadamente)
 DELETE FROM `promotions`;
 /*!40000 ALTER TABLE `promotions` DISABLE KEYS */;
+INSERT INTO `promotions` (`codigo_promotions`, `init_date_promotions`, `end_date_promotions`, `amount_promotions`, `avaibles_promotions`, `total_promotions`) VALUES
+	('A12345', '2014-03-30', '2014-05-01', 50, 10, 10);
 /*!40000 ALTER TABLE `promotions` ENABLE KEYS */;
 
 
@@ -429,7 +445,7 @@ CREATE TABLE IF NOT EXISTS `seguridad` (
   PRIMARY KEY (`id_seguridad`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
--- Volcando datos para la tabla miusado.seguridad: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla miusado.seguridad: ~23 rows (aproximadamente)
 DELETE FROM `seguridad`;
 /*!40000 ALTER TABLE `seguridad` DISABLE KEYS */;
 INSERT INTO `seguridad` (`id_seguridad`, `nombre_seguridad`) VALUES
@@ -470,7 +486,7 @@ CREATE TABLE IF NOT EXISTS `seguridadautos` (
   CONSTRAINT `fk_Seguridad_SeguridadAutos1` FOREIGN KEY (`fk_id_seguridad`) REFERENCES `seguridad` (`id_seguridad`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
--- Volcando datos para la tabla miusado.seguridadautos: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla miusado.seguridadautos: ~5 rows (aproximadamente)
 DELETE FROM `seguridadautos`;
 /*!40000 ALTER TABLE `seguridadautos` DISABLE KEYS */;
 INSERT INTO `seguridadautos` (`fk_id_seguridad`, `fk_id_autos`) VALUES
@@ -498,7 +514,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `username_users_UNIQUE` (`username_users`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
--- Volcando datos para la tabla miusado.users: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla miusado.users: ~0 rows (aproximadamente)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`username_users`, `password_users`, `name_users`, `email_users`, `phone_users`, `alt_phone_users`, `credits_users`, `is_super_users`, `is_active`) VALUES

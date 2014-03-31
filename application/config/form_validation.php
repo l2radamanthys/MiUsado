@@ -22,7 +22,10 @@ $config = array(
 
     "modelos_registrar" => array( 
         array('field' => 'nombre_modelos', 'label' => 'Nombre Modelos', 'rules' => 'required'),
-
     ),
     
+    "promocion_canjear" => array( 
+        array('field' => 'codigo_promotions', 'label' => 'Codigo de Promocion', 'rules' => 'required'),
+    ),
+
 );

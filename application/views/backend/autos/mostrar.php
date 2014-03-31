@@ -7,6 +7,14 @@
 <h1>Detalle Publicacion Vehiculo</h1>
 <br />
 
+<h3>Titulo de la Publicacion</h3>  
+<p><?=$auto['titulo_autos'];?></p>
+<br />
+<h3>Descripcion</h3>  
+<p><?=$auto['descripcion_autos'];?></p>
+
+<br />  
+
 <div id="tabs">
     <ul>
         <li><a href="#tabs-1" title="">Informacion Tecnica</a></li>
@@ -72,6 +80,9 @@
                     <td><?=$conf['nombre_confort'];?></td>
                 </tr>
             <?endforeach;?>
+            <?if(count($confort) == 0):?>
+                <tr><td>No Se Especificaron caracteristicas de Confort</td></tr>
+            <?endif;?>
         </table>
         
         <br />
@@ -87,6 +98,9 @@
                     <td><?=$seg['nombre_seguridad'];?></td>
                 </tr>
             <?endforeach;?>
+            <?if(count($seguridad) == 0):?>
+                <tr><td>No Se Especificaron caracteristicas de Seguridad</td></tr>
+            <?endif;?>
         </table>
         
         <br />
@@ -96,10 +110,38 @@
     </div>
 
     <div id="tabs-4">
-        Multimedia
+        <table class="ctable" style="width: 600px; margin: 0 auto;">
+            <?foreach($multimedia as $mult):?>
+                <tr>
+                    <td><?=$mult['nombre_multimedia'];?></td>
+                </tr>
+            <?endforeach;?>
+            <?if(count($multimedia) == 0):?>
+                <tr><td>No Se Especificaron caracteristicas de Multimedia</td></tr>
+            <?endif;?>
+        </table>
+        
+        <br />
+        <div style="text-align: right;">                    
+            <a href="<?=base_url();?>autos/seleccionar_multimedia/<?=$auto['id_autos'];?>/" class="grad-button-blue">Modificar</a>
+        </div>
     </div>
 
     <div id="tabs-5">
-        Exterior
+        <table class="ctable" style="width: 600px; margin: 0 auto;">
+            <?foreach($exterior as $ext):?>
+                <tr>
+                    <td><?=$ext['nombre_exterior'];?></td>
+                </tr>
+            <?endforeach;?>
+            <?if(count($exterior) == 0):?>
+                <tr><td>No Se Especificaron caracteristicas de Exterior</td></tr>
+            <?endif;?>
+        </table>
+        
+        <br />
+        <div style="text-align: right;">                    
+            <a href="<?=base_url();?>autos/seleccionar_exterior/<?=$auto['id_autos'];?>/" class="grad-button-blue">Modificar</a>
+        </div>
     </div>            
 </div>
