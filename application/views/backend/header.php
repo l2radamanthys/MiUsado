@@ -8,9 +8,12 @@
     <link type="text/css" rel="stylesheet" media="all" href="<?=base_url()?>media/styles/gradient-buttons.css" />    
     <link type="text/css" rel="stylesheet" media="all" href="<?=base_url()?>media/styles/style.css" />
     <link type="text/css" rel="stylesheet" media="all" href="<?=base_url()?>media/styles/backend.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="<?=base_url()?>media/styles/jquery-ui-1.10.4.custom.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="<?=base_url()?>media/styles/custom-jquery-ui.css" />
 
 
     <script type="text/javascript" src="<?=base_url()?>media/scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>media/scripts/jquery-ui-1.10.4.custom.js"></script>
 
     <?echo (isset($js_include))? $js_include: "<!-- js -->";?>    
 

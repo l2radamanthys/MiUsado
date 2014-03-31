@@ -26,6 +26,15 @@ class Autos_model extends CI_Model {
 
     function filter($condition)
     {
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE ".$condition);
+        return $query->result_array();
+    }
+
+
+    function filter_get($condition)
+    {
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE ".$condition);
+        return $query->row_array();
     }
 
     

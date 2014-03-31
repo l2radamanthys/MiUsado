@@ -4,9 +4,10 @@
             <div class="sub-cont">          
                 <ul class="submenu">
                     <li><h3>Publicaciones</h3></li>
-                    <li><a href="" title="">Nueva</a></li>
+                    <li><a href="<?=base_url();?>backend/nueva_publicacion/" title="">Nueva</a></li>
                     <li><a href="" title="">Activas</a></li>
-                    <li><a href="" title="">Finalizadas</a></li>
+                    <li><a href="" title="">Pausadas</a></li>
+                    <li><a href="<?=base_url();?>autos/all/" title="">Todas</a></li>
                     <li>&nbsp;</li>
                     <li><h3>Creditos</h3></li>
                     <li><a href="" title="">Cargar Credito</a></li>

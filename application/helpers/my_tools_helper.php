@@ -25,3 +25,35 @@ function my_resize_image($img_name, $width=100, $height=100)
         return TRUE;
     }
 }
+
+
+/*
+ * Funcion Humanizadora en ves de Mostrar 1 por True mostrara "Activa"
+ * y "Inactiva" en el caso de False o 1"
+ */
+function humanize_status($val)
+{
+    if ($val)
+    {
+        return "Activa";
+    }
+    else 
+    {
+        return "Inactiva";
+    }
+}
+
+
+function humanize_date($val)
+{
+    if ($val == NULL)
+    {
+        return "--/--/---";
+    }
+    else 
+    {
+        return $val;    
+    }
+     
+}
+

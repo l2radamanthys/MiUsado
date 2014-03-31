@@ -1,0 +1,17 @@
+
+.ui-tabs-nav {
+    background-color: #0080C0;
+
+}
+
+.ui-tabs-nav a {
+    color: #FFF;
+}
+
+li.ui-tabs-active {
+    background-color: #F9F9F9;
+}
+
+li.ui-tabs-active a {
+    color: #333 !important;
+}

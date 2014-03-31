@@ -16,7 +16,7 @@
                     <li><a href="" title="">Recomendaciones a la Hora de Comprar</a></li>
                     <li><a href="" title="">Como Vender</a></li>
                     <li><a href="" title="" id="ablink">Vender</a></li>
-                    <li><a href="" title="">Iniciar Session</a></li>
+                    <li><a href="<?=base_url();?>session/login/" title="">Iniciar Session</a></li>
                 </ul>
 
                 <!-- Adds -->

@@ -1,6 +1,6 @@
 <?php 
 
-class Confort_model extends CI_Model {
+class Seguridad_model extends CI_Model {
     var $table_name;
     var $table_relation;
         
@@ -8,8 +8,8 @@ class Confort_model extends CI_Model {
     {
         #super::__construct();
         $this->load->database();
-        $this->table_name = 'Confort';
-        $this->table_relation = "ConfortAutos"; #Tabla para el M:M
+        $this->table_name = 'Seguridad';
+        $this->table_relation = "SeguridadAutos"; #Tabla para el M:M
     }
 
 
@@ -46,8 +46,7 @@ class Confort_model extends CI_Model {
      */
     public function join_filter($condition)
     {
-        $query = $this->db->query("SELECT * FROM ".$this->table_name." AS C INNER JOIN ".$this->table_relation." AS CA ON C.id_confort = CA.fk_id_confort WHERE ".$condition);
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." AS S INNER JOIN ".$this->table_relation." AS SA ON S.id_seguridad = SA.fk_id_seguridad WHERE ".$condition);
         return $query->result_array();
     }
 }
-        

@@ -81,8 +81,24 @@ table.panel-pub tr:first-child td:last-child {
     width: 170px;
 }
 
+
 .icon-link:hover {
     background-color: #FF5300; 
     font-weight: bold;
     box-shadow: 1px 1px 5px #AAA;
-} 
+}
+
+.ctable {
+    width:100%;
+    margin-bottom:1em;
+}
+.ctable th {
+    font-weight:bold;
+}
+
+.ctable th,.ctable td{
+    padding:0.5em;
+    border:1px solid #ccc;
+}
+
+

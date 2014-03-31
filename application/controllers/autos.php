@@ -92,6 +92,8 @@ class Autos extends CI_Controller {
             $this->load->library('form_validation');
             $this->load->helper('form');
             
+            $data['id_autos'] = $id_autos;
+            
             # como no hay campos para validar ya que todos son opcionales
             # no funciona el metodo tradicional de CI de validacion de form
             #if ($this->form_validation->run() == FALSE)
@@ -107,25 +109,27 @@ class Autos extends CI_Controller {
             }
             else 
             {
-
                 $confort = $this->confort_model->all();
-                echo "<h1>Conforts Seleccionados</h1>";
-
+                $conf = array();                
                 #elimina todas las especificaciones confort de un auto
                 $this->confort_model->del_all_from_car($id_autos);
-
+                
                 foreach ($confort as $row) {
                     if ($this->input->post('conf_'.$row['id_confort']))
                     {
-                        echo $row['nombre_confort']."<br>";
+                        $conf[] = $row['nombre_confort'];
                         $row_data = array(
                             'fk_id_autos' => $id_autos, 
                             'fk_id_confort' => $row['id_confort'], 
                         );
-                        
                         $this->confort_model->insert_fron_car($row_data);
                     }
                 }
+                $data['confort'] = $conf;
+                $this->load->view('backend/header');
+                $this->load->view('backend/confort/confort-seleccionado', $data);
+                $this->load->view('backend/footer');
+                
             }
         }
         else 
@@ -133,6 +137,64 @@ class Autos extends CI_Controller {
             show_404();
         }          
     }    
+
+    public function seleccionar_seguridad($id_autos, $new=0)
+    {
+        if ($this->auth->is_logged()) 
+        {
+            
+            $this->load->model('marcas_model');
+            $this->load->model('seguridad_model');
+            
+            $this->load->library('form_validation');
+            $this->load->helper('form');
+            
+            $data['id_autos'] = $id_autos;
+            
+            # como no hay campos para validar ya que todos son opcionales
+            # no funciona el metodo tradicional de CI de validacion de form
+            #if ($this->form_validation->run() == FALSE)
+            if ($this->input->post('q') == FALSE)
+            {
+                $data['seguridad'] = $this->seguridad_model->all();
+                $data['id_autos'] = $id_autos;
+                $data['new'] = $new; 
+
+                $this->load->view('backend/header');
+                $this->load->view('backend/seguridad/seleccionar', $data);
+                $this->load->view('backend/footer');
+            }
+            else 
+            {
+                $seguridad = $this->seguridad_model->all();
+                $seg = array();                
+                #elimina todas las especificaciones confort de un auto
+                $this->seguridad_model->del_all_from_car($id_autos);
+                
+                foreach ($seguridad as $row) {
+                    if ($this->input->post('seg_'.$row['id_seguridad']))
+                    {
+                        $seg[] = $row['nombre_seguridad'];
+                        $row_data = array(
+                            'fk_id_autos' => $id_autos, 
+                            'fk_id_seguridad' => $row['id_seguridad'], 
+                        );
+                        $this->seguridad_model->insert_fron_car($row_data);
+                    }
+                }
+                $data['seguridad'] = $seg;
+                $this->load->view('backend/header');
+                $this->load->view('backend/seguridad/seleccionado', $data);
+                $this->load->view('backend/footer');
+                
+            }
+        }
+        else 
+        {
+            show_404();
+        }          
+    }    
+
 
 
     public function subir_imagen($id=NULL)
@@ -158,6 +220,68 @@ class Autos extends CI_Controller {
         {
             show_404();
         }
+    }
+    
+    
+    /*
+     * Todas las Publicaciones del usuario
+     * 
+     * 
+     */
+    public function all()
+    {
+        if ($this->auth->is_logged()) 
+        {
+            
+            $this->load->model('modelos_model');
+            $this->load->model('marcas_model');
+            #$this->load->model('autos_model');
+            
+            $user = $this->auth->is_logged();            
+            $data['autos'] = $this->autos_model->filter("fk_username_users='".$user."'");
+            
+            $this->load->view('backend/header', $data);
+            $this->load->view('backend/autos/todas', $data);
+            $this->load->view('backend/footer');
+        }
+        else 
+        {
+            show_404();
+        }
+    }
+    
+    
+    public function show($id)
+    {
+        if ($this->auth->is_logged()) 
+        {
+            
+            $this->load->model('modelos_model');
+            $this->load->model('marcas_model');
+            $this->load->model('confort_model');
+            $this->load->model('seguridad_model');
+                        
+            $user = $this->auth->is_logged();
+            $query = "id_autos=".$id." AND fk_username_users='".$user."'";
+            $data['auto'] = $this->autos_model->filter_get($query);
+            
+            $modelo = $this->modelos_model->get($data['auto']['fk_id_modelos']);
+            $marca = $this->marcas_model->get('id_marcas='.$modelo['fk_id_marcas']);
+            $data['auto']['nombre_modelos'] = $modelo['nombre_modelos'];
+            $data['auto']['nombre_marcas'] = $marca['nombre_marcas'];   
+            
+            
+            $data['confort'] = $this->confort_model->join_filter("fk_id_autos=".$id);
+            $data['seguridad'] = $this->seguridad_model->join_filter("fk_id_autos=".$id);
+            
+            $this->load->view('backend/header', $data);
+            $this->load->view('backend/autos/mostrar', $data);
+            $this->load->view('backend/footer');
+        }
+        else 
+        {
+            show_404();
+        }        
     }
 
 }
