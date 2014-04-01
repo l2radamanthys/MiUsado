@@ -19,10 +19,16 @@ class Promociones_model extends CI_Model {
     }
 
 
+    /*
+     * Retorna si existe una Promocion 
+     *
+     */  
 	public function exist($code)
 	{
-		#nose  si implementar
-	}
+        $condition = "codigo_promotions='".$code."'";
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE ".$condition);
+        return $query->num_rows();
+    }
 	
 
     public function get($condition) 
@@ -30,6 +36,15 @@ class Promociones_model extends CI_Model {
         $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE ".$condition);
         $query->row_array();        
     }
+
+
+    public function get_by_key($code)
+    {
+        $condition = "codigo_promotions='".$code."'";
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE ".$condition);
+        return $query->row_array();
+    }
+    
 
 
     public function filter($condition)
@@ -51,7 +66,7 @@ class Promociones_model extends CI_Model {
      */ 
     public function ref_insert($data)
     {
-        $this->db->insert($this->table_name, $data);
+        $this->db->insert($this->table_reference, $data);
     }
 
 
@@ -68,13 +83,27 @@ class Promociones_model extends CI_Model {
      * @param $codigo codigo de promocion
      * @param $user nombre de usuario  
      */ 
-	public function is_canjeada($codigo, $user)
+	public function is_exchanged($codigo, $user)
 	{
 		$condition = "fk_codigo_promotions='".$codigo."' AND fk_username_users='".$user."'";
 		$query = $this->db->query('SELECT * FROM '.$this->table_reference." WHERE ".$condition);
-		$result = count($query->result_array());
-		return $result;
+		return $query->num_rows();
 	}
+
+
+    /**
+     * Decrementa en 1 el campo avaibles_promotions
+     *
+     * @param string $code identificado del codigo de promocion
+     */  
+    public function decreace_avaible($code)
+    {
+        $av  = $this->get_by_key($code)['avaibles_promotions'] - 1;
+        $data = array('avaibles_promotions' => $av);
+        $this->update('codigo_promotions', $code, $data);       
+    }
+    
+
 
 }
 

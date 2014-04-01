@@ -38,4 +38,21 @@ class Users_model extends CI_Model {
         return $this->user_exist($user);
     }
 
+    
+    public function update($key, $value, $data)
+    {
+        $this->db->where($key,$value);
+        $this->db->update($this->table_name, $data);        
+    }
+    
+    
+    public function add_credits($user, $amount)
+    {
+        $ucredit = $this->user_exist($user)['credits_users'];
+        $data = array('credits_users' => ($ucredit + $amount));
+        $this->update('username_users', $user, $data);
+            
+    }
+    
+
 }
