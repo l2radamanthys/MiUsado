@@ -98,7 +98,8 @@ class Promociones_model extends CI_Model {
      */  
     public function decreace_avaible($code)
     {
-        $av  = $this->get_by_key($code)['avaibles_promotions'] - 1;
+        $promotion  = $this->get_by_key($code);
+        $av = $promotion['avaibles_promotions'] -= 1;
         $data = array('avaibles_promotions' => $av);
         $this->update('codigo_promotions', $code, $data);       
     }

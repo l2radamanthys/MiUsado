@@ -48,8 +48,8 @@ class Users_model extends CI_Model {
     
     public function add_credits($user, $amount)
     {
-        $ucredit = $this->user_exist($user)['credits_users'];
-        $data = array('credits_users' => ($ucredit + $amount));
+        $userd = $this->user_exist($user);           
+        $data = array('credits_users' => ($userd['credits_users'] + $amount));
         $this->update('username_users', $user, $data);
             
     }
