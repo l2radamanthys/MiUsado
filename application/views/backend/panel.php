@@ -11,11 +11,15 @@
                     <td> <?=$coins;?></td>
                 </tr>
                 <tr>
+                    <td>Publicaciones</td>
+                    <td><?=$pubs;?></td>
+                </tr>
+                <tr>
                     <td>Publicaciones Activas</td>
                     <td><?=$active_pub;?></td>
                 </tr>
                 <tr>
-                    <td>Publicaciones Finalizadas</td>
+                    <td>Publicaciones Inactivas</td>
                     <td><?=$end_pub;?></td>
                 </tr>                
             </table>

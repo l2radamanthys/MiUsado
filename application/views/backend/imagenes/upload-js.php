@@ -13,7 +13,9 @@
             // Your options here
 
             'method': 'post',
-            'formData': {'id' : '1'}, //ID del Auto
+            'formData': {
+                'id' : '<?=$auto['id_autos'];?>' //ID del Auto
+            }, 
 
 
             //estilo
@@ -22,9 +24,9 @@
             'width': 140,
 
             //eventos
-            'onUploadSuccess' : function(file, data, response) {
+            /*'onUploadSuccess' : function(file, data, response) {
                 alert('The file was saved to: ' + data);
-            }
+            }*/
         });
     });
 

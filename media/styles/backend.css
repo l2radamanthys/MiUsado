@@ -101,4 +101,6 @@ table.panel-pub tr:first-child td:last-child {
     border:1px solid #ccc;
 }
 
-
+.submenu a {
+    font-size: 10pt;
+}

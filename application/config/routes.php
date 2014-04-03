@@ -39,7 +39,9 @@
 */
 
 $route['default_controller'] = "views";
-$route['404_override'] = 'views/page_404';
+$route['backend'] = "backend/backend";
+$route['backend/nueva_publicacion'] = "backend/backend/nueva_publicacion";     #ruteo para el panel administrador$route['backend/(:any)'] = 
+#$route['404_override'] = 'views/page_404';
 
 
 /* End of file routes.php */

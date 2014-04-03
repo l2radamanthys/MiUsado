@@ -2,6 +2,13 @@
 
 class Http_response extends CI_Controller {
     
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('images_model');
+    }
+    
+    
     /*
      * Devuele todos los modelos correspondientes a una Marca 
      */
@@ -52,7 +59,9 @@ class Http_response extends CI_Controller {
     {
         $this->load->helper('my_tools');
         
-        $target_path = $this->config->item('image_path');
+        
+        
+        $target_path = $this->config->item('upload_path'); 
         $upload_config['upload_path'] = $target_path;
         $upload_config['allowed_types'] = 'gif|jpg|png';         
         $upload_config['max_size'] = '5120'; 
@@ -68,16 +77,32 @@ class Http_response extends CI_Controller {
         {
             $imageData  = $this->upload->data();
             $img_name = $imageData['file_name'];
-            if(my_resize_image($img_name))
-            {
-                echo $img_name;
-            }
-            else 
-            {
-                echo "Error -> ".$img_name;    
-            }
-        }
             
+            #main 350x350
+            $size1_folder = $this->config->item('main_thumb_path'); 
+            $size1 = $this->config->item('main_thumb_size');
+            if(!my_resize_image($img_name, $size1_folder, $size1))
+            {
+                echo "Error -> size 1 ".$img_name; 
+                   
+            }
+            
+            #sub 80x80
+            $size2_folder = $this->config->item('sub_thumb_path'); 
+            $size2 = $this->config->item('sub_thumb_size');
+            if(!my_resize_image($img_name, $size2_folder, $size2))
+            {
+                echo "Error -> size 2 ".$img_name;    
+            }
+            
+            #search 180x180
+            $size3_folder = $this->config->item('search_thumb_path'); 
+            $size3 = $this->config->item('search_thumb_size');
+            if(!my_resize_image($img_name, $size3_folder, $size3))
+            {
+                echo "Error -> size 3 ".$img_name;    
+            }
+        }  
     }
 
 

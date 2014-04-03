@@ -1,4 +1,4 @@
-<h1>Todas las Publicaciones</h1>
+<h1>Vehiculos Publicados</h1>
 
 <br />
 <table class="simple-table">
@@ -20,10 +20,10 @@
             <?=humanize_date($auto['venc_date_autos']);?>
         </td>
         <td style="text-align: center;">
-            <a href="<?=base_url();?>autos/show/<?=$auto['id_autos'];?>/" title=""><img src="<?=base_url();?>media/images/search.png" alt="" /></a>&nbsp;
-            <a href="<?=base_url();?>autos/share/<?=$auto['id_autos'];?>/" title=""><img src="<?=base_url();?>media/images/share.png" alt="" /></a>&nbsp;
-            <a href="<?=base_url();?>autos/edit/<?=$auto['id_autos'];?>/" title=""><img src="<?=base_url();?>media/images/edit.png" alt="" /></a>&nbsp;
-            <a href="<?=base_url();?>autos/delete/<?=$auto['id_autos'];?>/" title=""><img src="<?=base_url();?>media/images/trash.png" alt="" /></a>
+            <a href="<?=base_url();?>backend/autos/show/<?=$auto['id_autos'];?>/" title=""><img src="<?=base_url();?>media/images/search.png" alt="Mostrar Detalle" /></a>&nbsp;
+            <a href="<?=base_url();?>backend/autos/share/<?=$auto['id_autos'];?>/" title=""><img src="<?=base_url();?>media/images/share.png" alt="Publicar" /></a>&nbsp;
+            <!-- a href="<?=base_url();?>backend/autos/edit/<?=$auto['id_autos'];?>/" title=""><img src="<?=base_url();?>media/images/edit.png" alt="" /></a>&nbsp; -->
+            <a href="<?=base_url();?>backend/autos/delete/<?=$auto['id_autos'];?>/" title=""><img src="<?=base_url();?>media/images/trash.png" alt="Eliminar" /></a>
         </td>
     </tr>
     <?endforeach;?>

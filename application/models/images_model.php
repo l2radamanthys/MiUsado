@@ -1,12 +1,12 @@
 <?php
 
-class Autos_model extends CI_Model {
+class Images_model extends CI_Model {
     var $table_name;
         
     function __construct() 
     {
         $this->load->database();
-        $this->table_name = 'Autos';
+        $this->table_name = 'ImagenesAuto';
     }
 
 
@@ -19,7 +19,7 @@ class Autos_model extends CI_Model {
 
     function get($id)
     {
-        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE id_autos=".$id);
+        $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE id_imagenesauto=".$id);
         return $query->row_array();
     }
 
@@ -58,6 +58,19 @@ class Autos_model extends CI_Model {
         
     }
     
+    
+    
+    function count($condition=NULL)
+    {
+        if ($condition != NULL)
+        {
+            $query = $this->db->query("SELECT * FROM ".$this->table_name." WHERE ".$condition);        
+        }
+        else 
+        {
+            $query = $this->db->query("SELECT * FROM ".$this->table_name);                
+        }
+        return $query->num_rows();
+        
+    }
 }
-
-

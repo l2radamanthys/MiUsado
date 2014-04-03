@@ -2,27 +2,37 @@
 
 
 
-function my_resize_image($img_name, $width=100, $height=100)
+function my_resize_image($img_name, $folder=NULL, $size=array('width'=>100, 'height'=>100))
 {
     $ci =& get_instance();
     $ci->load->library('image_lib');
     
-    $target_path = $ci->config->item('image_path');
-    $thumb_path = $ci->config->item('thumb_path');
-    
-    $config['source_image'] = $target_path . $img_name;
-    $config['new_image'] = $thumb_path . $img_name;
-    $config['width'] = $width;
-    $config['height'] = $height;
-        
-    $ci->image_lib->initialize($config);
-    if (!$ci->image_lib->resize())
+    if ($folder == NULL)
     {
-        return FALSE;
+        $thumb_path = $ci->config->item('main_thumb_path');    
     }
     else
     {
+        $thumb_path = $folder;
+    }
+
+    $target_path = $ci->config->item('upload_path');    
+    
+    $config['source_image'] = $target_path . $img_name;     
+    $config['new_image'] = $thumb_path . $img_name;
+    #$config['create_thumb'] = FALSE;
+    #$config['maintain_ratio'] = TRUE;
+    $config['width'] = $size['width'];
+    $config['height'] = $size['height'];
+        
+    $ci->image_lib->initialize($config);
+    if ($ci->image_lib->resize())
+    {
         return TRUE;
+    }
+    else
+    {
+        return FALSE;
     }
 }
 
@@ -55,5 +65,11 @@ function humanize_date($val)
         return $val;    
     }
      
+}
+
+
+function alink($url)
+{
+    return '<p><a href="'.base_url().$url.'">'.$url.'</a></p>';    
 }
 

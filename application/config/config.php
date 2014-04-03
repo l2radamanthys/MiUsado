@@ -366,10 +366,15 @@ $config['proxy_ips'] = '';
 
  
 //Carpeta contenedora de todas las imagenes 
-$config['image_path'] = './media/upload/images/';
+$config['upload_path'] = './media/upload/images/realsize/'; #tamaño real
 
 //Carpeta contenedora de todas las thumbnails de las imagenes
-$config['thumb_path'] = './media/upload/thumbs/'; 
+$config['main_thumb_path'] = './media/upload/images/350x350/'; #350x350
+$config['main_thumb_size'] = array('width' => 350, 'height' => 350 );
+$config['sub_thumb_path'] = './media/upload/images/80x80/'; #80x80
+$config['sub_thumb_size'] = array('width' => 80, 'height' => 80 );
+$config['search_thumb_path'] = './media/upload/images/180x180/'; #180x180
+$config['search_thumb_size'] = array('width' => 180, 'height' => 180 );
  
 /*-----------------------------------------------------------------------*/
   
