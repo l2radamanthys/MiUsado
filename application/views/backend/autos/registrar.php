@@ -12,7 +12,7 @@ BREVEDAD ESTA SERA EVALUADA Y REGISTRADA. MUCHAS GRACIAS
 
 
 <br />
-<div class="forms">
+<div class="form-ui">
 <?=form_open('autos/registrar/');?>
     <p>
         <label>Marca:</label>
@@ -119,8 +119,9 @@ BREVEDAD ESTA SERA EVALUADA Y REGISTRADA. MUCHAS GRACIAS
         <?=form_error('precio_autos');?>
     </p>
 
-    <p>
-        <input type="submit" value="Registrar" class="grad-button-blue"/>
+    <p style="text-align: center;">
+        <input type="submit" value="Registrar" class="metro-ui-button grey icon-save"/>
+        <input type="reset" value="Limpiar" class="metro-ui-button grey icon-prev"/>
     </p>
 </form>
 </div>

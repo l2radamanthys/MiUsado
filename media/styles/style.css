@@ -281,52 +281,6 @@ footer {
      padding: 5pt 10pt 5pt 9pt;
 }
 
-.forms {
-    padding-left:20pt;
-}
-
-.forms input[type="text"], .forms select, .forms textarea {
-    background: linear-gradient(center top , #FFFFFF,  #EEEEEE 1px, #FFFFFF 20px);
-    background: -moz-linear-gradient(center top , #FFFFFF,  #EEEEEE 1px, #FFFFFF 20px);    
-    background: -webkit-gradient(linear, left top, left 20, from(#FFFFFF), color-stop(5%, #EEEEEE) to(#FFFFFF));
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FBFBFB', endColorstr='#FFFFFF');
-    
-
-}
-
-.forms label {
-    display: block;
-    margin-bottom:3pt;
-}
-
-.forms input[type="text"] {
-    border: 1px solid #AAA;
-    height: 20px;
-    min-width: 100px;
-    padding: 5px 3px;
-    border-radius: 3px;
-    font-size: 10pt;
-}
-
-.forms select {
-    heigth: 40px;
-    padding: 5px;
-    line-height: 1;
-    border: 1px solid #AAA;
-    min-width: 100px;
-    border-radius: 3px;
-}
-
-.forms textarea {
-    padding: 5px;
-    border: 1px solid #AAA;
-    border-radius: 3px;
-}
-
-.forms p{
-    display: block;
-    margin-bottom: 5pt;
-}
 
 .field-error {
     color: #F00;
